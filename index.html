@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A browser workspace for coding help, powered by one designated computer.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https: http://localhost:* http://127.0.0.1:*; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#1b231f">
+  <title>Overview | Coding Agent</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./assets/config.js" defer></script>
+  <script src="./assets/common.js" defer></script>
+</head>
+<body class="layout">
+  <a class="skip" href="#main">Skip to content</a>
+  <aside class="rail" aria-label="Workspace">
+    <a class="brand" href="./index.html"><img src="./assets/mark.svg" width="36" height="36" alt=""><span>Coding Agent<small>HOSTED WORKBENCH</small></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="./index.html" aria-current="page"><svg aria-hidden="true"><use href="./assets/icons.svg#overview"></use></svg>Overview</a>
+      <a href="./chat.html"><svg aria-hidden="true"><use href="./assets/icons.svg#chat"></use></svg>Chat</a>
+      <a href="./claim.html"><svg aria-hidden="true"><use href="./assets/icons.svg#notes"></use></svg>Claim</a>
+    </nav>
+    <div class="rail-foot"><svg aria-hidden="true"><use href="./assets/icons.svg#server"></use></svg><span>Single-host inference</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="crumb"><span>Workspace</span><span aria-hidden="true">/</span><strong>Overview</strong></div>
+      <div class="host-status" data-status="checking"><span class="dot"></span><span data-health="label" role="status">Checking host</span></div>
+    </header>
+    <main class="content" id="main" tabindex="-1">
+      <section class="intro" aria-labelledby="title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span></span> THE CODING WORKBENCH</p>
+          <h1 id="title">The only free AI model better than Claude Mythos</h1>
+          <p class="lead">According to itself. Not independently benchmarked. Results may vary.</p>
+          <div class="page-actions">
+            <a href="./chat.html" class="button primary">Open chat<svg aria-hidden="true"><use href="./assets/icons.svg#arrow"></use></svg></a>
+            <a href="./claim.html" class="button secondary">See the claim</a>
+          </div>
+        </div>
+        <figure class="route-figure">
+          <figcaption><span>Request path</span><span class="figure-tag">01 / ROUTING</span></figcaption>
+          <ol class="route-list">
+            <li>
+              <div class="route-icon"><svg aria-hidden="true"><use href="./assets/icons.svg#browser"></use></svg></div>
+              <div><strong>Your browser</strong><span>Open the website on GitHub Pages.</span></div>
+              <code>01</code>
+            </li>
+            <li>
+              <div class="route-icon"><svg aria-hidden="true"><use href="./assets/icons.svg#shield"></use></svg></div>
+              <div><strong>Coding Agent API</strong><span>Send requests securely to the separate host.</span></div>
+              <code>02</code>
+            </li>
+            <li>
+              <div class="route-icon emphasis"><svg aria-hidden="true"><use href="./assets/icons.svg#server"></use></svg></div>
+              <div><strong>Model host</strong><span>Generate one response at a time.</span></div>
+              <code>03</code>
+            </li>
+          </ol>
+        </figure>
+      </section>
+      <div class="overview-grid">
+        <section class="overview-section" aria-labelledby="status-title">
+          <div class="section-heading"><h2 id="status-title">Model host</h2><button class="text-button" data-refresh type="button">Refresh</button></div>
+          <p class="quiet" data-health="description">Checking whether the host can accept requests.</p>
+          <dl class="host-details">
+            <div><dt>Runtime</dt><dd data-health="engine">Not reported</dd></div>
+            <div><dt>Adapter</dt><dd data-health="adapter">Not reported</dd></div>
+            <div><dt>Queue</dt><dd data-health="queue">Not reported</dd></div>
+            <div><dt>Web references</dt><dd data-health="web">Not reported</dd></div>
+          </dl>
+        </section>
+        <section class="overview-section" aria-labelledby="start-title">
+          <div class="section-heading"><h2 id="start-title">Start with a task</h2></div>
+          <ul class="task-list">
+            <li><a href="./chat.html?task=debug"><svg aria-hidden="true"><use href="./assets/icons.svg#bug"></use></svg><span><strong>Debug an error</strong><small>Bring the traceback and what you expected.</small></span><svg aria-hidden="true"><use href="./assets/icons.svg#external"></use></svg></a></li>
+            <li><a href="./chat.html?task=explain"><svg aria-hidden="true"><use href="./assets/icons.svg#code"></use></svg><span><strong>Explain a snippet</strong><small>Start with a short block of unfamiliar code.</small></span><svg aria-hidden="true"><use href="./assets/icons.svg#external"></use></svg></a></li>
+            <li><a href="./chat.html?task=refactor"><svg aria-hidden="true"><use href="./assets/icons.svg#branch"></use></svg><span><strong>Plan a refactor</strong><small>Describe the code and what must stay the same.</small></span><svg aria-hidden="true"><use href="./assets/icons.svg#external"></use></svg></a></li>
+          </ul>
+        </section>
+      </div>
+      <footer class="footer"><span>Review model output before using it.</span><a href="./notes.html#history">How chats are stored <svg aria-hidden="true"><use href="./assets/icons.svg#arrow"></use></svg></a></footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https: http://localhost:* http://127.0.0.1:*; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#1b231f">
+  <title>Chat | Coding Agent</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./assets/config.js" defer></script>
+  <script src="./assets/common.js" defer></script>
+  <script src="./assets/chat.js" defer></script>
+</head>
+<body class="layout chat-layout">
+  <a class="skip" href="#main">Skip to content</a>
+  <aside class="rail" aria-label="Workspace">
+    <a class="brand" href="./index.html"><img src="./assets/mark.svg" width="36" height="36" alt=""><span>Coding Agent<small>HOSTED WORKBENCH</small></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="./index.html"><svg aria-hidden="true"><use href="./assets/icons.svg#overview"></use></svg>Overview</a>
+      <a href="./chat.html" aria-current="page"><svg aria-hidden="true"><use href="./assets/icons.svg#chat"></use></svg>Chat</a>
+      <a href="./claim.html"><svg aria-hidden="true"><use href="./assets/icons.svg#notes"></use></svg>Claim</a>
+    </nav>
+    <button class="mobile-history rail-button" id="history-toggle" type="button" aria-expanded="false" aria-controls="history">
+      <svg aria-hidden="true"><use href="./assets/icons.svg#menu"></use></svg>History
+    </button>
+    <section id="history" class="history" aria-labelledby="history-heading">
+      <button class="rail-button" id="new" type="button" disabled><svg aria-hidden="true"><use href="./assets/icons.svg#plus"></use></svg>New conversation</button>
+      <h2 id="history-heading">RECENT CONVERSATIONS</h2>
+      <p class="history-empty" id="history-empty">No conversations yet.</p>
+      <ul id="threads" class="threads"></ul>
+    </section>
+    <div class="rail-foot"><svg aria-hidden="true"><use href="./assets/icons.svg#shield"></use></svg><span>Separate browser sessions</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="crumb"><span>Workspace</span><span aria-hidden="true">/</span><strong>Chat</strong></div>
+      <div class="host-status" data-status="checking"><span class="dot"></span><span data-health="label" role="status">Checking host</span></div>
+    </header>
+    <main class="chat-main" id="main" tabindex="-1">
+      <div class="chat-heading">
+        <h1 id="thread-title">New conversation</h1>
+        <button class="icon-button" id="delete" type="button" aria-label="Delete conversation" title="Delete conversation" hidden><svg aria-hidden="true"><use href="./assets/icons.svg#trash"></use></svg></button>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="chat-inner">
+          <div class="notice" id="connection" hidden><span data-health="chat">Checking the host.</span><button type="button" class="text-button" data-refresh>Check again</button></div>
+          <form class="access" id="access" hidden>
+            <h2>Enter your access code</h2>
+            <p>Ask the host operator for the code. It opens a separate session in this browser.</p>
+            <label for="code">Access code</label>
+            <div><input id="code" type="password" name="code" required maxlength="256" autocomplete="current-password"><button class="button primary" type="submit">Continue</button></div>
+          </form>
+          <section class="starters" id="starters" aria-labelledby="starter-title">
+            <div class="starter-icon"><svg aria-hidden="true"><use href="./assets/icons.svg#code"></use></svg></div>
+            <h2 id="starter-title">What are you working on?</h2>
+            <p>Describe the task or paste a short snippet. These starters fill in an example you can edit before sending.</p>
+            <div class="starter-list">
+              <button type="button" class="starter" data-task="debug"><svg aria-hidden="true"><use href="./assets/icons.svg#bug"></use></svg><span>Debug an error</span><svg aria-hidden="true"><use href="./assets/icons.svg#external"></use></svg></button>
+              <button type="button" class="starter" data-task="explain"><svg aria-hidden="true"><use href="./assets/icons.svg#code"></use></svg><span>Explain a snippet</span><svg aria-hidden="true"><use href="./assets/icons.svg#external"></use></svg></button>
+              <button type="button" class="starter" data-task="refactor"><svg aria-hidden="true"><use href="./assets/icons.svg#branch"></use></svg><span>Plan a refactor</span><svg aria-hidden="true"><use href="./assets/icons.svg#external"></use></svg></button>
+            </div>
+          </section>
+          <section id="messages" class="messages" aria-label="Messages"></section>
+          <p id="progress" class="progress" role="status"></p>
+          <div class="notice error" id="problem" hidden><span id="problem-text" role="alert"></span><button class="text-button" type="button" id="recover" hidden>Reconnect</button></div>
+        </div>
+      </div>
+      <div class="composer-wrap" id="composer-wrap">
+        <form class="composer chat-inner" id="composer">
+          <div class="composer-box">
+            <label class="sr-only" for="input">Your message</label>
+            <textarea id="input" placeholder="Ask about code or paste a snippet…" rows="2" maxlength="8000" aria-describedby="input-help" spellcheck="false" enterkeyhint="send"></textarea>
+            <div class="composer-tools">
+              <label class="web-select" for="web"><svg aria-hidden="true"><use href="./assets/icons.svg#globe"></use></svg><span>Web</span>
+                <select id="web" aria-label="Web lookup mode" disabled><option value="auto">Auto</option><option value="on">On</option><option value="off">Off</option></select>
+              </label>
+              <div class="response-actions">
+                <button class="button stop" id="stop" type="button" hidden><svg aria-hidden="true"><use href="./assets/icons.svg#stop"></use></svg>Stop</button>
+                <button class="button primary send" id="send" type="submit" disabled>Send <svg aria-hidden="true"><use href="./assets/icons.svg#send"></use></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="composer-foot" id="input-help"><span>Don’t paste keys, passwords, or private code.</span><span class="keys"><kbd>Enter</kbd> send <span aria-hidden="true">·</span> <kbd>Shift</kbd> + <kbd>Enter</kbd> new line</span></div>
+        </form>
+      </div>
+    </main>
+  </div>
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <form method="dialog">
+      <h2 id="delete-title">Delete this conversation?</h2>
+      <p>The prompts and replies in this thread will be removed from your history. This can’t be undone.</p>
+      <div class="dialog-actions"><button class="button secondary" value="cancel" autofocus>Keep conversation</button><button class="button danger" value="delete">Delete</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

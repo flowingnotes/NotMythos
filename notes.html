@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https: http://localhost:* http://127.0.0.1:*; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#1b231f">
+  <title>Usage notes | Coding Agent</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./assets/config.js" defer></script>
+  <script src="./assets/common.js" defer></script>
+</head>
+<body class="layout">
+  <a class="skip" href="#main">Skip to content</a>
+  <aside class="rail" aria-label="Workspace">
+    <a class="brand" href="./index.html"><img src="./assets/mark.svg" width="36" height="36" alt=""><span>Coding Agent<small>HOSTED WORKBENCH</small></span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="./index.html"><svg aria-hidden="true"><use href="./assets/icons.svg#overview"></use></svg>Overview</a>
+      <a href="./chat.html"><svg aria-hidden="true"><use href="./assets/icons.svg#chat"></use></svg>Chat</a>
+      <a href="./claim.html"><svg aria-hidden="true"><use href="./assets/icons.svg#notes"></use></svg>Claim</a>
+    </nav>
+    <div class="rail-foot"><svg aria-hidden="true"><use href="./assets/icons.svg#server"></use></svg><span>Single-host inference</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="crumb"><span>Workspace</span><span aria-hidden="true">/</span><strong>Usage notes</strong></div>
+      <div class="host-status" data-status="checking"><span class="dot"></span><span data-health="label" role="status">Checking host</span></div>
+    </header>
+    <main class="content docs" id="main" tabindex="-1">
+      <header class="docs-intro">
+        <p class="eyebrow"><span></span> USING THE WORKBENCH</p>
+        <h1>Usage notes</h1>
+        <p class="lead">Where responses come from, what the host keeps, and what to do when a request needs a second try.</p>
+      </header>
+      <div class="docs-grid">
+        <nav class="toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <a href="#model">The model</a><a href="#history">Conversation history</a><a href="#availability">Host availability</a><a href="#web">Web references</a>
+        </nav>
+        <div class="article">
+          <section id="model"><h2>The model</h2><p>Coding Agent helps you read, write, and revise code. It doesn’t run the code it writes or open files on your device. Check its reasoning, then run your own tests.</p><p>The host operator chooses the base model and any fine-tuned adapter. A model’s own description of its performance is not a benchmark.</p></section>
+          <section id="history"><h2>Conversation history</h2><p>Completed turns are stored on the AI host, not in your browser. This browser stores a session key to reopen its threads. Use a separate browser profile or a private window on a shared device.</p><p>Sessions expire after <span data-session-days>30</span> days by default. Deleting a thread removes it from your history. Clearing this site’s browser data removes your key and access to those threads. Don’t submit credentials or material you aren’t allowed to share with the host operator.</p></section>
+          <section id="availability"><h2>Host availability</h2><p>The host processes one response at a time. If it’s working on another response, you’ll see your position in line. You can stop your own request, or reopen the same thread if your connection drops.</p><p>If the queue is full, wait and send again. If the host is offline, check its status on the <a href="./index.html">overview</a> or contact the operator.</p></section>
+          <section id="web"><h2>Web references</h2><p>When the operator enables web lookup, selected queries are sent to a search provider. The host uses result snippets, not the contents of pasted URLs. Turn Web off before sending anything you don’t want used as a search query, and verify any reference before relying on it.</p></section>
+          <a href="./chat.html" class="button primary">Open chat<svg aria-hidden="true"><use href="./assets/icons.svg#arrow"></use></svg></a>
+        </div>
+      </div>
+      <footer class="footer"><span>One model host. No visitor-side setup.</span><a href="./index.html">Back to overview <svg aria-hidden="true"><use href="./assets/icons.svg#arrow"></use></svg></a></footer>
+    </main>
+  </div>
+</body>
+</html>
