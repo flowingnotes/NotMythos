@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coding Agent - Chat</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%A4%96%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="chat">
+  <div class="chatbar">
+    <a class="mini" href="index.html">&larr; Dashboard</a>
+    <span class="pill"><span id="dot" class="dot"></span><span id="state">Checking...</span></span>
+    <span class="spacer"></span>
+    <label for="web" class="fine" style="margin:0">Web</label>
+    <select id="web" title="Internet access">
+      <option value="auto">Auto</option>
+      <option value="on">Always</option>
+      <option value="off">Off</option>
+    </select>
+    <button id="settings" title="Model server address">Server</button>
+    <button id="clear">Clear</button>
+  </div>
+  <div class="banner" id="banner">
+    <strong>Can't reach the model.</strong> Start it on your computer with <code>./launch.sh serve</code>
+    (Chrome may ask to allow access to devices on your network: choose Allow).
+    <button id="retry" style="margin-left:8px">Retry</button>
+  </div>
+  <div id="log" aria-live="polite"></div>
+  <div class="composer">
+    <textarea id="input" rows="1" placeholder="Ask for code, or ask it to look something up... (Enter to send, Shift+Enter for a new line)"></textarea>
+    <button class="btn" id="send">Send</button>
+    <button class="btn ghost" id="stop" style="display:none">Stop</button>
+  </div>
+<script src="assets/common.js"></script>
+<script src="assets/chat.js"></script>
+</body>
+</html>
